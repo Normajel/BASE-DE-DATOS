@@ -1,0 +1,72 @@
+-- SE CREA LA DATABASE
+CREATE SCHEMA `telovendo`;
+
+-- SE CREAN LAS TABLAS CORRESPONDIENTES
+CREATE TABLE Pedidos (
+    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+    rut_cliente VARCHAR (12) NOT NULL,
+    id_producto VARCHAR(100) NOT NULL,
+    fecha_pedido int NOT NULL,
+    entregado_pedido INT
+);
+CREATE TABLE Proveedor (
+    id_proveedor INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    rut VARCHAR(10) NOT NULL,
+    rubro VARCHAR (50) NOT NULL,
+    direccion VARCHAR(255),
+    ciudad VARCHAR(100),
+    telefono VARCHAR(20),
+    email VARCHAR(100)
+);
+CREATE TABLE Clientes (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    rut VARCHAR(10) NOT NULL,
+    direccion VARCHAR(255),
+    ciudad VARCHAR(100),
+    telefono VARCHAR(20),
+    email VARCHAR(100)
+);
+CREATE TABLE producto (
+	id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_prod VARCHAR (100),
+    categoria VARCHAR (10),
+    rubro_prod VARCHAR (50),
+    color VARCHAR (255),
+    descripción_prod VARCHAR (100),
+    precio DOUBLE,
+    stock_prod INT
+);
+
+-- SE CREAN LAS SOLICITUDES
+
+-- SUMA DE STOCK PARA DETERMINAR EL QUE TENGA MAYOR STOCK
+SELECT id_proveedor, SUM(stock) AS stock_prod
+FROM producto
+GROUP BY id_proveedor
+ORDER BY stock_prod DESC
+LIMIT 1;
+
+-- consulta sobre proveedor con mas stock
+SELECT (SELECT categoria
+FROM producto
+GROUP BY categoria
+ORDER BY COUNT(*) DESC
+LIMIT 1) AS categoria_mas_repetida,
+nombre_prod AS producto_con_mas_stock;
+
+-- color de producto es más común en nuestra tiendA
+SELECT color, COUNT(*) AS cantidad
+FROM producto
+GROUP BY color
+ORDER BY cantidad DESC
+LIMIT 1;
+
+-- consulta de producto que más se repite
+SELECT categoria, COUNT(*) AS repeticiones
+FROM producto
+GROUP BY categoria
+ORDER BY repeticiones desc
+LIMIT 1;
