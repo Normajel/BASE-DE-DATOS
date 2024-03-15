@@ -2,6 +2,7 @@
 CREATE SCHEMA `telovendo`;
 
 -- SE CREAN LAS TABLAS CORRESPONDIENTES
+
 CREATE TABLE Pedidos (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     rut_cliente VARCHAR (12) NOT NULL,
@@ -9,6 +10,21 @@ CREATE TABLE Pedidos (
     fecha_pedido int NOT NULL,
     entregado_pedido INT
 );
+
+-- se utiliza la sentencia INSERT INTO para poder ingresar datos a la planilla pedidos
+INSERT INTO nombre_de_la_tabla (id_cliente, id_producto, fecha_pedido, entregado_pedido, cantidad_prod) 
+VALUES (2, 1, '2024-01-01', 1, 2);
+INSERT INTO nombre_de_la_tabla (id_pedido, id_cliente, id_producto, fecha_pedido, entregado_pedido, cantidad_prod) 
+VALUES (4, 2, '2024-03-11', 0, 9);
+INSERT INTO nombre_de_la_tabla (id_pedido, id_cliente, id_producto, fecha_pedido, entregado_pedido, cantidad_prod) 
+VALUES (1, 3, '2024-01-22', 1, 5);
+INSERT INTO nombre_de_la_tabla (id_pedido, id_cliente, id_producto, fecha_pedido, entregado_pedido, cantidad_prod) 
+VALUES (6, 4, '2024-02-07', 1, 13);
+INSERT INTO nombre_de_la_tabla (id_pedido, id_cliente, id_producto, fecha_pedido, entregado_pedido, cantidad_prod) 
+VALUES (3, 6, '2024-01-27', 0, 5);
+INSERT INTO nombre_de_la_tabla (id_pedido, id_cliente, id_producto, fecha_pedido, entregado_pedido, cantidad_prod) 
+VALUES (1, 7, '2024-03-06', 0, 12);
+
 CREATE TABLE Proveedor (
     id_proveedor INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -19,6 +35,15 @@ CREATE TABLE Proveedor (
     telefono VARCHAR(20),
     email VARCHAR(100)
 );
+
+-- se utiliza la sentencia INSERT INTO para poder ingresar datos a la planilla proveedor
+INSERT INTO nombre_de_la_tabla (nombre, rut, rubro, dirección, ciudad, email) 
+VALUES ('Electronica stock', '764583215', 'Computación', 'Loa monres 0226', 'Quillón', 'electstock@empresa.cl');
+INSERT INTO nombre_de_la_tabla (nombre, rut, rubro, dirección, ciudad, email) 
+VALUES ('Tu monitor', '693652348', 'Electrónica', 'Avenida lago azul 12', 'Los Vilos', 'tumonitor@empresa.cl');
+INSERT INTO nombre_de_la_tabla (nombre, rut, rubro, dirección, ciudad, email) 
+VALUES ('Servipc', '728906566', 'Accesorios PC', 'Juan Pablo II 02148', 'Santiago', 'servipc@empresa.cl');
+
 CREATE TABLE Clientes (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -29,8 +54,21 @@ CREATE TABLE Clientes (
     telefono VARCHAR(20),
     email VARCHAR(100)
 );
+
+-- se utiliza la sentencia INSERT INTO para poder ingresar datos a la planilla clientes
+insert into Clientes (nombre, apellido, rut, direccion,ciudad,telefono,email) 
+values  ('felix','jimenez','1','el valle','santiago','+56911111','uno@gmail.com');
+insert into Clientes (nombre, apellido, rut, direccion,ciudad,telefono,email) 
+values  ('karla','cortes','2','santiago centro','santiago','+5692222','dos@gmail.com');
+insert into Clientes (nombre, apellido, rut, direccion,ciudad,telefono,email) 
+values  ('norma','jeldres','3','lo vaHlledor','santiago','+56933333','tres@gmail.com');
+insert into Clientes (nombre, apellido, rut, direccion,ciudad,telefono,email) 
+values  ('cristian','mcfarlan','4','el valle','santiago','+569444444','cuatro@gmail.com');
+insert into Clientes (nombre, apellido, rut, direccion,ciudad,telefono,email) 
+values  ('nicolas','jimenez','5','el valle','santiago','+56911111','cinco@gmail.com');
+
 CREATE TABLE producto (
-	id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
     nombre_prod VARCHAR (100),
     categoria VARCHAR (10),
     rubro_prod VARCHAR (50),
@@ -40,7 +78,40 @@ CREATE TABLE producto (
     stock_prod INT
 );
 
+-- se utiliza la sentencia INSERT INTO para poder ingresar datos a la planilla producto
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('smart tv 40 pulgadas', 'monitor', 'electronica', 'negro', 'Smart Tv de 40 pulgas con sistema android', 199990, 10);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Monitor', 'monitor', 'electronica', 'negro', 'Monitor con sistema operativo Android y pantalla de alta resolución.', 299990, 20);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Cámara web profesional', 'cámara', 'computación', 'verde', 'Cámara web con sensor de alta resolución y capacidad de grabación en 4K.', 89990, 50);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Tablet de última generación', 'tablets', 'Computación', 'amarillo', 'Tablet con procesador de alto rendimiento y pantalla táctil de 10 pulgadas.', 499990, 150);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Auriculares inalámbricos', 'Audio', 'accesorios pc', 'Blanco', 'Auriculares inalámbricos con cancelación de ruido y calidad de sonido premium.', 149990, 100);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Tablet Acer Aspire 5', 'tablets', 'Computación', 'amarillo', 'Tablet con pantalla de 11 pulgadas, procesador 8 nucleos, 8 GB de RAM', 189000, 20);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Mouse Logitech MX Master 3', 'Periférico', 'accesorios pc', 'celeste', 'Mouse inalámbrico de alta precisión con conexión Bluetooth.', 7990, 50);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Monitor LG UltraWide 34"', 'Monitor', 'electronica', 'negro', 'Monitor ultrapanorámico de 34 pulgadas con resolución QHD.', 95990, 15);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Disco Duro Externo Backup', 'Discos', 'Computación', 'naranjo', 'Disco duro externo de 2 TB con conexión USB 3.0.', 79900, 30);
+INSERT INTO nombre_de_la_tabla (nombre_prod, categoría, rubro_prod, color, descripción_prod, precio, stock_prod) 
+VALUES ('Teclado Mecánico Corsair K70 RGB', 'Periférico', 'accesorios pc', 'celeste', 'Teclado mecánico con retroiluminación RGB personalizable.', 17990, 25);
+
 -- SE CREAN LAS SOLICITUDES
+
+-- sirve para conocer el nombre, apellido y telefono del los clientes
+ select nombre,apellido,telefono from Clientes;
+
+--- entrega los datos del proveedor
+select rut,nombre,direccion,rubro from Proveedor;
+
+- Este código nos entrega quien compró, es decir el cliente, el producto que adquirió y la fecha del pedido
+select c.nombre as "Cliente", s.nombre_prod as "producto", p.fecha_pedido 
+from Pedidos p, Clientes c, Producto s 
+where p.id_cliente = c.id_cliente and p.id_producto = s.id_producto;
 
 -- SUMA DE STOCK PARA DETERMINAR EL QUE TENGA MAYOR STOCK
 SELECT id_proveedor, SUM(stock) AS stock_prod
