@@ -114,19 +114,17 @@ from Pedidos p, Clientes c, Producto s
 where p.id_cliente = c.id_cliente and p.id_producto = s.id_producto;
 
 -- SUMA DE STOCK PARA DETERMINAR EL QUE TENGA MAYOR STOCK
-SELECT id_proveedor, SUM(stock) AS stock_prod
+SELECT nombre_prod, SUM(stock_prod) AS stock_prod
 FROM producto
-GROUP BY id_proveedor
+GROUP BY id_producto
 ORDER BY stock_prod DESC
 LIMIT 1;
 
 -- consulta sobre proveedor con mas stock
-SELECT (SELECT categoria
+SELECT (SELECT nombre_prod
 FROM producto
-GROUP BY categoria
-ORDER BY COUNT(*) DESC
-LIMIT 1) AS categoria_mas_repetida,
-nombre_prod AS producto_con_mas_stock;
+ORDER BY stock_prod DESC
+LIMIT 1) AS producto_con_mas_stock;
 
 -- color de producto es más común en nuestra tiendA
 SELECT color, COUNT(*) AS cantidad
